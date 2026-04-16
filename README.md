@@ -1,3 +1,6 @@
+# TO READ THE REPORT AKA PDF YOU NEED TO DOWNLOAD IT, GITHUB WONT PROPERLY SHOW THE TEXT. SO DOWNLOAD IT AND THEN CHECK
+
+
 # Building PES-VCS — A Version Control System from Scratch
 
 **Objective:** Build a local version control system that tracks file changes, stores snapshots efficiently, and supports commit history. Every component maps directly to operating system and filesystem concepts.
