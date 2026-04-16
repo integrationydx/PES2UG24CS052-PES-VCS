@@ -190,14 +190,23 @@ static int compare_index_entries(const void *a, const void *b) {
 // Build a tree hierarchy from the current index and write all tree objects to
 // the object store.  Returns the root tree's ObjectID in *id_out.
 int tree_from_index(ObjectID *id_out) {
-    Index index;
-    if (index_load(&index) != 0) return -1;
-    if (index.count == 0) return -1; // nothing staged
+    Index *index = malloc(sizeof(Index));
+    if (!index) return -1;
+    if (index_load(index) != 0) {
+        free(index);
+        return -1;
+    }
+    if (index->count == 0) {
+        free(index);
+        return -1; // nothing staged
+    }
 
     // Sort entries by path so that sibling files and directories are adjacent.
     // write_tree_level relies on this ordering to group subdirectory entries.
-    qsort(index.entries, index.count, sizeof(IndexEntry), compare_index_entries);
+    qsort(index->entries, index->count, sizeof(IndexEntry), compare_index_entries);
 
     // Kick off the recursive build from the root (empty prefix).
-    return write_tree_level(index.entries, index.count, "", id_out);
+    int rc = write_tree_level(index->entries, index->count, "", id_out);
+    free(index);
+    return rc;
 }
