@@ -19,7 +19,7 @@ sudo apt update && sudo apt install -y gcc build-essential libssl-dev
 This is a **template repository**. Do **not** fork it.
 
 1. Click **"Use this template"** → **"Create a new repository"** on GitHub
-2. Name your repository (e.g., `SRN-pes-vcs`) and set it to **public**. Replace `SRN` with your actual SRN, e.g., `PESXUG24CSYYY-pes-vcs`
+2. Name `PES2UG24CS052-PES-VCS`
 3. Clone this repository to your local machine and do all your lab work inside this directory.
 4.  **Important:** Remember to commit frequently as you progress. You are required to have a minimum of 5 detailed commits per phase. Refer to [Submission Requirements](#submission-requirements) for more details.
 5. Clone your new repository and start working
